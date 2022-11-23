@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = "SELECT EMAIL FROM EMPLOYEE WHERE EMAIL = :email", nativeQuery = true)
     String findEmail(@Param("email") String email);
     List<Employee> findByOrderBySalaryDesc();
+
+    List<Employee> findByOrderByEmployeeResignDate();
+
 
 
 }

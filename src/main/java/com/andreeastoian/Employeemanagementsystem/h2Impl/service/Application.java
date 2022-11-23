@@ -13,16 +13,15 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showMainO
 @Configuration
 public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
-    @Autowired
-    H2Operations h2Operations;
-    @Autowired
-    EmployeeCrudH2ServiceImpl employeeCrudH2Service;
-    @Autowired
-    EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
+   private H2Operations h2Operations;
+    private EmployeeCrudH2ServiceImpl employeeCrudH2Service;
 
-    @Autowired
-    public void Application(H2Operations h2Operations) {
+    private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
+
+    public Application(H2Operations h2Operations, EmployeeCrudH2ServiceImpl employeeCrudH2Service, EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl) {
         this.h2Operations = h2Operations;
+        this.employeeCrudH2Service = employeeCrudH2Service;
+        this.employeeFilterH2ServiceImpl = employeeFilterH2ServiceImpl;
     }
 
 
@@ -55,6 +54,7 @@ public class Application {
                     break;
                 case 5:
                     h2Operations.applyFilters();
+                    break;
             }
 
         } while (input.nextInt() != 6);

@@ -6,11 +6,9 @@ import com.andreeastoian.Employeemanagementsystem.h2Impl.service.EmployeeCrudH2S
 import com.andreeastoian.Employeemanagementsystem.h2Impl.service.EmployeeFilterH2ServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +19,6 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showFilte
 public class H2Operations {
     private EmployeeRepository employeeRepository;
     private EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl;
-
     private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
 
 
@@ -89,9 +86,16 @@ public class H2Operations {
 
                 case 2:
                     List<Employee> employeeSalaryListH2 = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
-                    for(int i=0; i<=4; i++)
+                    for (int i = 0; i <= 4; i++)
                         System.out.println(employeeSalaryListH2.get(i));
                     break;
+                case 3:
+                    LOGGER.info("Enter year as integer!");
+                    int year = input.nextInt();
+                    LOGGER.info("Enter month as integer!");
+                    int month = input.nextInt();
+                    List<Employee> employeesWhoResign = employeeFilterH2ServiceImpl.getEmployeesWhoResignByMonthAndYear(month, year);
+                    System.out.println(employeesWhoResign);
              /*
                 case 3:
                     LOGGER.info("Enter year as integer!");
@@ -112,8 +116,8 @@ public class H2Operations {
                     LOGGER.info(String.valueOf(filterFive));
                     break;
                 case 6:
-                    Optional<Employee> filterSix = employeeFilterH2ServiceImpl.getEmployeeWithMinimumSalary(employeeList);
-                    LOGGER.info(String.valueOf(filterSix));
+                   List<Employee> employeeWithBiggestSalary = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
+                   employeeWithBiggestSalary.get(1);
                     break;
                 case 7:
                     List<Employee> getManagers = employeeFilterH2ServiceImpl.getManagers(employeeList);

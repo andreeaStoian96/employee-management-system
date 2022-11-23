@@ -12,5 +12,4 @@ public interface EmployeeCrudH2Service {
 
     void updateEmployee(String email, Employee employee);
 
-
 }

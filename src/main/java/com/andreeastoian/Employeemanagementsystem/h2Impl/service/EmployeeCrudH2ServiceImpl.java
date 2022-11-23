@@ -10,10 +10,8 @@ import java.util.Optional;
 
 @Service
 public class EmployeeCrudH2ServiceImpl implements EmployeeCrudH2Service {
-
     @Autowired
     private EmployeeRepository employeeRepository;
-
 
     @Override
     public Employee saveEmployee(Employee employee) {
@@ -44,6 +42,5 @@ public class EmployeeCrudH2ServiceImpl implements EmployeeCrudH2Service {
         optionalEmployee.orElseThrow(() -> new EmployeeNotFoundException(String.format("No employee found for email %s", email)));
         return optionalEmployee.get();
     }
-
 
 }

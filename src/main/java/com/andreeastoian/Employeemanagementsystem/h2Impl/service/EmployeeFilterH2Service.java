@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface EmployeeFilterH2Service {
     List<Employee> getFirstTenEmployeesWithSeniority();
-
-   // Optional<List<Employee>> getFirstFiveEmployeeWithTheBestSalary(Employee employee);
-
     List<Employee> getFirstFiveEmployeeWithTheBestSalaryH2();
+    List<Employee> getEmployeesWhoResignByMonthAndYear( Integer month, Integer year);
 }
