@@ -125,7 +125,9 @@ public class CmdOperationsImpl implements CmdOperations {
                 case 7:
                     List<Employee> getManagers = employeeFilterOperationsImpl.getManagers(employeeList);
                     LOGGER.info("The managers are: ");
-                    getManagers.forEach(System.out::println);
+                    for (Employee managers: getManagers)
+                        System.out.println(managers);
+
                     break;
                 case 8:
                     employeeFilterOperationsImpl.getManagersAndEmployees(employeeList);

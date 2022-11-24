@@ -17,7 +17,7 @@ public class Messages {
                 + "6.Employee with the minimum salary\n"
                 + "7.Show managers\n"
                 + "8.Show managers with they're employee\n"
-                + "9.Show function and employee "
+                + "9.Show function and employee\n"
                 + "10.Enter 10 for main menu!");
     }
 

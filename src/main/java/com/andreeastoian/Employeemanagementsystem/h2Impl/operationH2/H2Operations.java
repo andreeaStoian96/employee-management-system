@@ -96,45 +96,35 @@ public class H2Operations {
                     int month = input.nextInt();
                     List<Employee> employeesWhoResign = employeeFilterH2ServiceImpl.getEmployeesWhoResignByMonthAndYear(month, year);
                     System.out.println(employeesWhoResign);
-             /*
-                case 3:
-                    LOGGER.info("Enter year as integer!");
-                    int year = input.nextInt();
-                    LOGGER.info("Enter month as integer!");
-                    int month = input.nextInt();
-                    List<Employee> employeesThree = employeeFilterH2ServiceImpl.getEmployeesWhoResignByMonthAndYear(employeeList, month, year);
-                    employeesThree.forEach(System.out::println);
                     break;
                 case 4:
                     LOGGER.info("Enter how many months!");
                     int months = input.nextInt();
-                    List<Employee> filteredEmployees = employeeFilterH2ServiceImpl.getListOfEmployeesInTheLastXMonths(employeeList, months);
-                    filteredEmployees.forEach(System.out::println);
+                    List<Employee> employeesEmployedInTheLastXMonths = employeeFilterH2ServiceImpl.getListOfEmployeesEmployedInTheLastXMonths(months);
+                    employeesEmployedInTheLastXMonths.forEach(System.out::println);
                     break;
                 case 5:
-                    Optional<Employee> filterFive = employeeFilterH2ServiceImpl.getEmployeeWithMaximumSalary(employeeList);
-                    LOGGER.info(String.valueOf(filterFive));
+                    List<Employee> employeeWithTheBiggestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMaximumSalary();
+                    LOGGER.info(String.valueOf(employeeWithTheBiggestSalary.get(0)));
                     break;
                 case 6:
-                   List<Employee> employeeWithBiggestSalary = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
-                   employeeWithBiggestSalary.get(1);
+                    List<Employee> employeeWithSmallestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMinimumSalary();
+                    LOGGER.info(String.valueOf(employeeWithSmallestSalary.get(0)));
                     break;
                 case 7:
-                    List<Employee> getManagers = employeeFilterH2ServiceImpl.getManagers(employeeList);
+                    List<Employee> managers = employeeFilterH2ServiceImpl.getManagers();
                     LOGGER.info("The managers are: ");
-                    getManagers.forEach(System.out::println);
+                    managers.forEach(System.out::println);
                     break;
                 case 8:
-                    employeeFilterH2ServiceImpl.getManagersAndEmployees(employeeList);
+                    employeeFilterH2ServiceImpl.getManagersAndEmployees();
                     break;
                 case 9:
-                    employeeFilterH2ServiceImpl.getFunctionAndEmployees(employeeList);
+                    employeeFilterH2ServiceImpl.getFunctionAndEmployees();
                     break;
                 default:
                     LOGGER.info("Enter a valid choice from the list!");
                     break;
-
-              */
             }
         } while (input.nextInt() != 10);
     }

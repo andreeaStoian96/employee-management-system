@@ -55,6 +55,7 @@ public class Application {
                 case 5:
                     h2Operations.applyFilters();
                     break;
+
             }
 
         } while (input.nextInt() != 6);

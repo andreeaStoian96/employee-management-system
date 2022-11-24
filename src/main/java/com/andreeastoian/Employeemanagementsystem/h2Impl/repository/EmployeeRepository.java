@@ -20,7 +20,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     String findEmail(@Param("email") String email);
     List<Employee> findByOrderBySalaryDesc();
 
+    List<Employee> findByOrderBySalaryAsc();
+
     List<Employee> findByOrderByEmployeeResignDate();
+
+    List<Employee> findByOrderByManagerName();
+
+    List<Employee> findByOrderByFunction();
+
 
 
 
