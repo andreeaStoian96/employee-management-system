@@ -23,13 +23,11 @@ public class EmployeeCrudH2ServiceImpl implements EmployeeCrudH2Service {
     public Employee getEmployee(String email) {
         return getEmployeeByEmail(email);
     }
-
     @Override
     public void deleteEmployee(String email) {
         Employee employee = getEmployeeByEmail(email);
         employeeRepository.delete(employee);
     }
-
     @Override
     public void updateEmployee(String email, Employee employee) {
         Employee oldEmployee = getEmployeeByEmail(email);

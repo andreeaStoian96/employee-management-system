@@ -3,7 +3,6 @@ package com.andreeastoian.Employeemanagementsystem.h2Impl.service;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.operationH2.H2Operations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Scanner;
@@ -13,9 +12,8 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showMainO
 @Configuration
 public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
-   private H2Operations h2Operations;
+    private H2Operations h2Operations;
     private EmployeeCrudH2ServiceImpl employeeCrudH2Service;
-
     private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
 
     public Application(H2Operations h2Operations, EmployeeCrudH2ServiceImpl employeeCrudH2Service, EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl) {
@@ -23,7 +21,6 @@ public class Application {
         this.employeeCrudH2Service = employeeCrudH2Service;
         this.employeeFilterH2ServiceImpl = employeeFilterH2ServiceImpl;
     }
-
 
     public void mainMessageH2() {
         Scanner input = new Scanner(System.in);
@@ -55,10 +52,8 @@ public class Application {
                 case 5:
                     h2Operations.applyFilters();
                     break;
-
             }
 
         } while (input.nextInt() != 6);
-
     }
 }

@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InitialEmployees {
-
-
     public static List<Employee> getInitialEmployees() {
         Employee emp1 = new Employee(1, "Maria", "Ion", 29, "mariaion@yahoo.com",
                 LocalDate.of(2009, 12, 11), null, "developer", true, "Maria Ion", 5999.0);

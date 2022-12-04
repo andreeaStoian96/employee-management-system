@@ -4,8 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Messages {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(Messages.class);
+
+    public static void showMainOperationMessage() {
+        LOGGER.info("Press: \n"
+                + "1 for add employee\n"
+                + "2 for view employee\n"
+                + "3 for delete employee\n"
+                + "4 for alter employee\n"
+                + "5 for filters\n"
+                + "6 for exiting the program");
+    }
 
     public static void showFiltersMessage() {
         LOGGER.info("Choose from the filter:\n"
@@ -33,15 +42,5 @@ public class Messages {
                 + "8.Salary\n"
                 + "9.resign date");
         LOGGER.info("Enter your choice:");
-    }
-
-    public static void showMainOperationMessage() {
-        LOGGER.info("Press: \n"
-                + "1 for add employee\n"
-                + "2 for view employee\n"
-                + "3 for delete employee\n"
-                + "4 for alter employee\n"
-                + "5 for filters\n"
-                + "6 for exiting the program");
     }
 }

@@ -6,12 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class EmployeeCrudOperationsImpl implements EmployeeCrudOperations {
-private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeCrudOperationsImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeCrudOperationsImpl.class);
 
     @Override
     public void addEmployee(List<Employee> employeeList, Employee employee) {
@@ -29,8 +28,9 @@ private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeCrudOperati
     public void deleteEmployee(List<Employee> employeeList, String verEmail) {
         Predicate<Employee> condition = employee -> (employee.getEmail().equals(verEmail));
         employeeList.removeIf(condition);
-       LOGGER.info("Employee deleted!");
+        LOGGER.info("Employee deleted!");
     }
+
     @Override
     public void alterEmployeeFromCmd(List<Employee> employeeList, Employee newEmployee) {
         for (Employee oldEmp : employeeList) {
@@ -41,14 +41,14 @@ private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeCrudOperati
         LOGGER.info(String.valueOf(newEmployee));
     }
 
-    public  Employee getEmployeeByEmail(List<Employee> employeeList, String verEmail) {
+    public Employee getEmployeeByEmail(List<Employee> employeeList, String verEmail) {
         List<Employee> employee = employeeList.stream()
                 .filter(employee1 -> employee1.getEmail().equalsIgnoreCase(verEmail))
                 .collect(Collectors.toList());
         if (!employee.isEmpty()) {
             return employee.get(0);
         }
-            throw new EmployeeNotFoundException(String.format("No employee found for email: %s", verEmail));
+        throw new EmployeeNotFoundException(String.format("No employee found for email: %s", verEmail));
     }
 
 }

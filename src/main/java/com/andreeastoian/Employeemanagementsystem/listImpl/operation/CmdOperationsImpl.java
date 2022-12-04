@@ -125,7 +125,7 @@ public class CmdOperationsImpl implements CmdOperations {
                 case 7:
                     List<Employee> getManagers = employeeFilterOperationsImpl.getManagers(employeeList);
                     LOGGER.info("The managers are: ");
-                    for (Employee managers: getManagers)
+                    for (Employee managers : getManagers)
                         System.out.println(managers);
 
                     break;
@@ -141,6 +141,7 @@ public class CmdOperationsImpl implements CmdOperations {
             }
         } while (input.nextInt() != 10);
     }
+
     Employee employeeFromCmd = new Employee();
     @Override
     public Employee createEmployeeFromCmd() {

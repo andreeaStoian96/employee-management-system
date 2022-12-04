@@ -93,8 +93,6 @@ EmployeeFilterOperationsImpl implements EmployeeFilterOperations {
            LOGGER.info("\n");
         }
     }
-
-
     public void getFunctionAndEmployees(List<Employee> employeeList) {
         employeeList.addAll(getInitialEmployees());
         Map<String, List<Employee>> employeeListByFunction = employeeList.stream()
@@ -109,7 +107,6 @@ EmployeeFilterOperationsImpl implements EmployeeFilterOperations {
           LOGGER.info("\n");
         }
     }
-
 }
 
 

@@ -16,11 +16,8 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showMainO
 
 public class MainClass {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainClass.class);
-
     EmployeeCrudOperationsImpl employeeCrudOperationsImpl = new EmployeeCrudOperationsImpl();
-
     CmdOperationsImpl cmdOperationsImpl = new CmdOperationsImpl();
-
     List<Employee> employeeList = new ArrayList<>();
 
     public void mainMassage() {

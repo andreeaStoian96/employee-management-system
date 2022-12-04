@@ -3,7 +3,6 @@ package com.andreeastoian.Employeemanagementsystem.h2Impl.service;
 
 import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.repository.EmployeeRepository;
-import com.andreeastoian.Employeemanagementsystem.listImpl.operation.EmployeeFilterOperationsImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -89,10 +88,10 @@ public class EmployeeFilterH2ServiceImpl implements EmployeeFilterH2Service {
         Map<String, List<Employee>> employeeListByFunction = employeeRepository.findByOrderByFunction().stream()
                 .collect(Collectors.groupingBy(Employee::getFunction));
         Set<Map.Entry<String, List<Employee>>> entrySet = employeeListByFunction.entrySet();
-        for(Map.Entry<String, List<Employee>> entry : entrySet){
-            LOGGER.info("Function is: \n" + entry.getKey() + "\n "+ "Employee name: ");
+        for (Map.Entry<String, List<Employee>> entry : entrySet) {
+            LOGGER.info("Function is: \n" + entry.getKey() + "\n " + "Employee name: ");
             List<Employee> list = entry.getValue();
-            for(Employee emp : list){
+            for (Employee emp : list) {
                 LOGGER.info(emp.getFirstName() + " " + emp.getFirstName());
             }
             LOGGER.info("\n");

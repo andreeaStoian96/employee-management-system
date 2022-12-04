@@ -19,13 +19,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(value = "SELECT EMAIL FROM EMPLOYEE WHERE EMAIL = :email", nativeQuery = true)
     String findEmail(@Param("email") String email);
     List<Employee> findByOrderBySalaryDesc();
-
     List<Employee> findByOrderBySalaryAsc();
-
     List<Employee> findByOrderByEmployeeResignDate();
-
     List<Employee> findByOrderByManagerName();
-
     List<Employee> findByOrderByFunction();
 
 

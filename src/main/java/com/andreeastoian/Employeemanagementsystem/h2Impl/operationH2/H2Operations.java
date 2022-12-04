@@ -21,15 +21,12 @@ public class H2Operations {
     private EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl;
     private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
 
-
     public H2Operations(EmployeeRepository employeeRepository, EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl, EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl) {
         this.employeeRepository = employeeRepository;
         this.employeeCrudH2ServiceImpl = employeeCrudH2ServiceImpl;
         this.employeeFilterH2ServiceImpl = employeeFilterH2ServiceImpl;
     }
-
     private static final Logger LOGGER = LoggerFactory.getLogger(H2Operations.class);
-
     public Employee createEmployeeForH2() {
         Employee employee = new Employee();
         Scanner input = new Scanner(System.in);
