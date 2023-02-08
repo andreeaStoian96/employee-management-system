@@ -25,12 +25,16 @@ public class EmployeeFilterH2ServiceImpl implements EmployeeFilterH2Service {
 
     @Override
     public List<Employee> getFirstTenEmployeesWithSeniority() {
-        return employeeRepository.findByOrderByEmploymentDateAsc();
+                List<Employee> employeeWithSeniorityLimit10 = employeeRepository.findByOrderByEmploymentDateAsc()
+                        .stream().limit(10).collect(Collectors.toList());
+                return employeeWithSeniorityLimit10;
     }
 
     @Override
     public List<Employee> getFirstFiveEmployeeWithTheBestSalaryH2() {
-        return employeeRepository.findByOrderBySalaryDesc();
+        List <Employee> bestPaid5Employee = employeeRepository.findByOrderBySalaryDesc().
+                stream().limit(5).collect(Collectors.toList());
+        return bestPaid5Employee;
     }
 
     public List<Employee> getEmployeesWhoResignByMonthAndYear(Integer month, Integer year) {
@@ -52,7 +56,9 @@ public class EmployeeFilterH2ServiceImpl implements EmployeeFilterH2Service {
 
     @Override
     public List<Employee> getEmployeeWithMaximumSalary() {
-        return employeeRepository.findByOrderBySalaryDesc();
+        List<Employee> employeeSalaryMaxSize5 = employeeRepository.findByOrderBySalaryDesc()
+                .stream().limit(5).collect(Collectors.toList());
+        return employeeSalaryMaxSize5;
     }
 
     @Override

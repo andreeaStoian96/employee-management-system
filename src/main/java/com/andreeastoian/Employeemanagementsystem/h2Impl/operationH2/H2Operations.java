@@ -78,14 +78,17 @@ public class H2Operations {
             switch (filter) {
                 case 1:
                     List<Employee> employeeListH2 = employeeFilterH2ServiceImpl.getFirstTenEmployeesWithSeniority();
-                    for (int i = 0; i <= 9; i++)
-                        LOGGER.info(String.valueOf(employeeListH2.get(i)));
+                    for (Employee employeeListFirst10WithSeniority : employeeListH2) {
+                        System.out.println(employeeListFirst10WithSeniority);
+                    }
+
                     break;
 
                 case 2:
                     List<Employee> employeeSalaryListH2 = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
-                    for (int i = 0; i <= 4; i++)
-                        LOGGER.info(String.valueOf(employeeSalaryListH2.get(i)));
+                    for (Employee fiveEmployeeBestPaid: employeeSalaryListH2) {
+                        System.out.println(fiveEmployeeBestPaid);
+                    }
                     break;
                 case 3:
                     LOGGER.info("Enter year as integer!");
@@ -127,7 +130,7 @@ public class H2Operations {
         } while (input.nextInt() != 10);
     }
 
-    public  Employee alterEmployeeFromH2Database() {
+    public Employee alterEmployeeFromH2Database() {
         LOGGER.info("Enter the employee email you want to modify:");
         Scanner input = new Scanner(System.in);
         String verEmail = input.next();
@@ -192,7 +195,7 @@ public class H2Operations {
                 break;
         }
         employeeCrudH2ServiceImpl.updateEmployee(verEmail, oldEmp);
-       return oldEmp;
+        return oldEmp;
 
     }
 
