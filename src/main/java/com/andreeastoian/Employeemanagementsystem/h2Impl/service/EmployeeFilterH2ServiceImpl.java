@@ -55,15 +55,16 @@ public class EmployeeFilterH2ServiceImpl implements EmployeeFilterH2Service {
     }
 
     @Override
-    public List<Employee> getEmployeeWithMaximumSalary() {
-        List<Employee> employeeSalaryMaxSize5 = employeeRepository.findByOrderBySalaryDesc()
-                .stream().limit(5).collect(Collectors.toList());
-        return employeeSalaryMaxSize5;
+    public Employee getEmployeeWithMaximumSalary() {
+       Employee employeeBestPaid= employeeRepository.findByOrderBySalaryDesc().stream().findFirst().get();
+       return employeeBestPaid;
     }
 
     @Override
-    public List<Employee> getEmployeeWithMinimumSalary() {
-        return employeeRepository.findByOrderBySalaryAsc();
+    public Employee getEmployeeWithMinimumSalary() {
+        Employee employeeWithMinimumWage= employeeRepository.findByOrderBySalaryAsc()
+                .stream().findFirst().get();
+        return employeeWithMinimumWage;
     }
 
     @Override

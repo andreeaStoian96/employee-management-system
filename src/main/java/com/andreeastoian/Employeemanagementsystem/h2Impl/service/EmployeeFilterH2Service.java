@@ -9,8 +9,8 @@ public interface EmployeeFilterH2Service {
     List<Employee> getFirstFiveEmployeeWithTheBestSalaryH2();
     List<Employee> getEmployeesWhoResignByMonthAndYear( Integer month, Integer year);
     List<Employee> getListOfEmployeesEmployedInTheLastXMonths(Integer months);
-    List<Employee> getEmployeeWithMaximumSalary();
-    List<Employee> getEmployeeWithMinimumSalary();
+    Employee getEmployeeWithMaximumSalary();
+    Employee getEmployeeWithMinimumSalary();
     List<Employee> getManagers();
     void getManagersAndEmployees();
     void getFunctionAndEmployees();

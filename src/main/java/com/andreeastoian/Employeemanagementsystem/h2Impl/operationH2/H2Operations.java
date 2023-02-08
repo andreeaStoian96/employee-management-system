@@ -81,12 +81,10 @@ public class H2Operations {
                     for (Employee employeeListFirst10WithSeniority : employeeListH2) {
                         System.out.println(employeeListFirst10WithSeniority);
                     }
-
                     break;
-
                 case 2:
                     List<Employee> employeeSalaryListH2 = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
-                    for (Employee fiveEmployeeBestPaid: employeeSalaryListH2) {
+                    for (Employee fiveEmployeeBestPaid : employeeSalaryListH2) {
                         System.out.println(fiveEmployeeBestPaid);
                     }
                     break;
@@ -105,12 +103,12 @@ public class H2Operations {
                     employeesEmployedInTheLastXMonths.forEach(System.out::println);
                     break;
                 case 5:
-                    List<Employee> employeeWithTheBiggestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMaximumSalary();
-                    LOGGER.info(String.valueOf(employeeWithTheBiggestSalary.get(0)));
+                    Employee employeeWithTheBiggestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMaximumSalary();
+                    LOGGER.info(String.valueOf(employeeWithTheBiggestSalary));
                     break;
                 case 6:
-                    List<Employee> employeeWithSmallestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMinimumSalary();
-                    LOGGER.info(String.valueOf(employeeWithSmallestSalary.get(0)));
+                    Employee employeeWithSmallestSalary = employeeFilterH2ServiceImpl.getEmployeeWithMinimumSalary();
+                    LOGGER.info(String.valueOf(employeeWithSmallestSalary));
                     break;
                 case 7:
                     List<Employee> managers = employeeFilterH2ServiceImpl.getManagers();
