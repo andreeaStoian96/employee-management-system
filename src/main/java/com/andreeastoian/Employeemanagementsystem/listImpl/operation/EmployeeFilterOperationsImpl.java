@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl.operation;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

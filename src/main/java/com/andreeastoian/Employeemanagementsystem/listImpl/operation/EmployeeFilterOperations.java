@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl.operation;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl.operation;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -179,7 +179,6 @@ public class CmdOperationsImpl implements CmdOperations {
         }
         LOGGER.info("Enter employee salary:");
         employeeFromCmd.setSalary(input.nextDouble());
-
         return employeeFromCmd;
     }
 

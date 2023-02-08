@@ -1,10 +1,11 @@
-package com.andreeastoian.Employeemanagementsystem.Entity;
+package com.andreeastoian.Employeemanagementsystem.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+
 @Entity
 public class Employee {
     @Id

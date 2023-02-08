@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl.util;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 
 import java.time.LocalDate;
 import java.util.Arrays;

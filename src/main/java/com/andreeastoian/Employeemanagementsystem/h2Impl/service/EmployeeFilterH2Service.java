@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.h2Impl.service;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 
 import java.util.List;
 

@@ -12,17 +12,15 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showMainO
 @Configuration
 public class Application {
     private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
-    private H2Operations h2Operations;
-    private EmployeeCrudH2ServiceImpl employeeCrudH2Service;
-    private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
+    private final H2Operations h2Operations;
+    private final EmployeeCrudH2ServiceImpl employeeCrudH2Service;
 
-    public Application(H2Operations h2Operations, EmployeeCrudH2ServiceImpl employeeCrudH2Service, EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl) {
+    public Application(H2Operations h2Operations, EmployeeCrudH2ServiceImpl employeeCrudH2Service) {
         this.h2Operations = h2Operations;
         this.employeeCrudH2Service = employeeCrudH2Service;
-        this.employeeFilterH2ServiceImpl = employeeFilterH2ServiceImpl;
     }
 
-    public void mainMessageH2() {
+    public void mainOperationsForH2Management() {
         Scanner input = new Scanner(System.in);
         do {
             showMainOperationMessage();
@@ -52,6 +50,8 @@ public class Application {
                 case 5:
                     h2Operations.applyFilters();
                     break;
+                default:
+                    LOGGER.info("Enter a correct choice!");
             }
 
         } while (input.nextInt() != 6);

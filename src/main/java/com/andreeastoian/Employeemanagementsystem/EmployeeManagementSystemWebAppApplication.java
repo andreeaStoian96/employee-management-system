@@ -15,10 +15,12 @@ import java.util.Scanner;
 @EnableJpaRepositories
 public class EmployeeManagementSystemWebAppApplication {
     private static Application application;
+
     @Autowired
     public void EmployeeManagementSystemWebAppApplication(Application application) {
         this.application = application;
     }
+
     public static void main(String[] args) {
         final Logger LOGGER = LoggerFactory.getLogger(EmployeeManagementSystemWebAppApplication.class);
 
@@ -26,13 +28,14 @@ public class EmployeeManagementSystemWebAppApplication {
 
         SpringApplication.run(EmployeeManagementSystemWebAppApplication.class, args);
 
-        LOGGER.info("Welcome to Employee Management System!\n 1.Use Java application\n 2.Use Java application with h2 database");
+        LOGGER.info("Welcome to Employee Management System! Please chose a method to manage the application" +
+                "\n 1.Using Collections\n 2.Using H2");
         Scanner input = new Scanner(System.in);
-        int inp = input.nextInt();
-        if (inp == 1) {
-            javaApplicationImplementation.mainMassage();
+        int methodOfManagement = input.nextInt();
+        if (methodOfManagement == 1) {
+            javaApplicationImplementation.mainOperationsForCollectionStorage();
         } else {
-            application.mainMessageH2();
+            application.mainOperationsForH2Management();
         }
     }
 }

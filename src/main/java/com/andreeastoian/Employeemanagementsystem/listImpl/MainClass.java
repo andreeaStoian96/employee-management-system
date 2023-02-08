@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 import com.andreeastoian.Employeemanagementsystem.listImpl.operation.CmdOperationsImpl;
 import com.andreeastoian.Employeemanagementsystem.listImpl.operation.EmployeeCrudOperationsImpl;
 import org.slf4j.Logger;
@@ -20,7 +20,7 @@ public class MainClass {
     CmdOperationsImpl cmdOperationsImpl = new CmdOperationsImpl();
     List<Employee> employeeList = new ArrayList<>();
 
-    public void mainMassage() {
+    public void mainOperationsForCollectionStorage() {
         employeeList.addAll(getInitialEmployees());
         Scanner input = new Scanner(System.in);
         do {

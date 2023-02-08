@@ -1,7 +1,7 @@
 package com.andreeastoian.Employeemanagementsystem.h2Impl.service;
 
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class EmployeeFilterH2ServiceImpl implements EmployeeFilterH2Service {
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeFilterH2ServiceImpl.class);
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeFilterH2ServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;

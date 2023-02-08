@@ -1,13 +1,10 @@
 package com.andreeastoian.Employeemanagementsystem.listImpl.operation;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 
 public interface CmdOperations {
     Employee alterEmployeeFromCmd();
-
     void applyFilters();
-
     Employee createEmployeeFromCmd();
-
     boolean isEmailInTheList(String email);
 }

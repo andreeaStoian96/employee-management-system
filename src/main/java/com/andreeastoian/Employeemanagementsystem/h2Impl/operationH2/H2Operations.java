@@ -1,6 +1,6 @@
 package com.andreeastoian.Employeemanagementsystem.h2Impl.operationH2;
 
-import com.andreeastoian.Employeemanagementsystem.Entity.Employee;
+import com.andreeastoian.Employeemanagementsystem.entity.Employee;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.repository.EmployeeRepository;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.service.EmployeeCrudH2ServiceImpl;
 import com.andreeastoian.Employeemanagementsystem.h2Impl.service.EmployeeFilterH2ServiceImpl;
@@ -17,16 +17,18 @@ import static com.andreeastoian.Employeemanagementsystem.util.Messages.showFilte
 
 @Component
 public class H2Operations {
-    private EmployeeRepository employeeRepository;
-    private EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl;
-    private EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
+    private final EmployeeRepository employeeRepository;
+    private final EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl;
+    private final EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl;
 
     public H2Operations(EmployeeRepository employeeRepository, EmployeeCrudH2ServiceImpl employeeCrudH2ServiceImpl, EmployeeFilterH2ServiceImpl employeeFilterH2ServiceImpl) {
         this.employeeRepository = employeeRepository;
         this.employeeCrudH2ServiceImpl = employeeCrudH2ServiceImpl;
         this.employeeFilterH2ServiceImpl = employeeFilterH2ServiceImpl;
     }
+
     private static final Logger LOGGER = LoggerFactory.getLogger(H2Operations.class);
+
     public Employee createEmployeeForH2() {
         Employee employee = new Employee();
         Scanner input = new Scanner(System.in);
@@ -37,8 +39,7 @@ public class H2Operations {
         LOGGER.info("Enter employee age: ");
         employee.setAge(input.nextInt());
         String email;
-        boolean emailAlreadyExists =
-                false;
+        boolean emailAlreadyExists;
         do {
             LOGGER.info("Enter employee email:");
             email = input.next();
@@ -78,13 +79,13 @@ public class H2Operations {
                 case 1:
                     List<Employee> employeeListH2 = employeeFilterH2ServiceImpl.getFirstTenEmployeesWithSeniority();
                     for (int i = 0; i <= 9; i++)
-                        System.out.println(employeeListH2.get(i));
+                        LOGGER.info(String.valueOf(employeeListH2.get(i)));
                     break;
 
                 case 2:
                     List<Employee> employeeSalaryListH2 = employeeFilterH2ServiceImpl.getFirstFiveEmployeeWithTheBestSalaryH2();
                     for (int i = 0; i <= 4; i++)
-                        System.out.println(employeeSalaryListH2.get(i));
+                        LOGGER.info(String.valueOf(employeeSalaryListH2.get(i)));
                     break;
                 case 3:
                     LOGGER.info("Enter year as integer!");
@@ -126,7 +127,7 @@ public class H2Operations {
         } while (input.nextInt() != 10);
     }
 
-    public Employee alterEmployeeFromH2Database() {
+    public  Employee alterEmployeeFromH2Database() {
         LOGGER.info("Enter the employee email you want to modify:");
         Scanner input = new Scanner(System.in);
         String verEmail = input.next();
@@ -191,7 +192,7 @@ public class H2Operations {
                 break;
         }
         employeeCrudH2ServiceImpl.updateEmployee(verEmail, oldEmp);
-        return oldEmp;
+       return oldEmp;
 
     }
 
