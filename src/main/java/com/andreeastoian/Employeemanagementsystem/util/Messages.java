@@ -9,11 +9,12 @@ public class Messages {
     public static void showMainOperationMessage() {
         LOGGER.info("Press: \n"
                 + "1 for add employee\n"
-                + "2 for view employee\n"
-                + "3 for delete employee\n"
-                + "4 for alter employee\n"
-                + "5 for filters\n"
-                + "6 for exiting the program");
+                + "2 for view employee by email\n"
+                + "3 for view all employees\n"
+                + "4 for delete employee\n"
+                + "5 for alter employee\n"
+                + "6 for filters\n"
+                + "7 for exiting the program");
     }
 
     public static void showFiltersMessage() {

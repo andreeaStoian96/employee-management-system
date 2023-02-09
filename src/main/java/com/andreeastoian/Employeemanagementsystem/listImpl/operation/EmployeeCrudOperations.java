@@ -13,4 +13,6 @@ public interface EmployeeCrudOperations {
     void deleteEmployee(List<Employee> employeeList, String email);
 
     void alterEmployeeFromCmd(List<Employee> employeeList, Employee newEmployee);
+
+    void showAllEmployees(List<Employee> employeeList);
 }

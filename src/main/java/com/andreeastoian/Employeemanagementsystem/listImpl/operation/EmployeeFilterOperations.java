@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public interface EmployeeFilterOperations {
 
-    List<Employee> getFirstTenEmployeesWithSeniority(List<Employee> employeeList);
+    List<Employee> getFirstTenEmployeesWithSeniority(List<Employee>employeeList);
 
     List<Employee> getFirstFiveEmployeeWithTheBestSalary(List<Employee> employeeList);
 

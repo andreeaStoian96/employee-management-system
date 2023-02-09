@@ -6,26 +6,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static com.andreeastoian.Employeemanagementsystem.listImpl.util.InitialEmployees.getInitialEmployees;
 import static com.andreeastoian.Employeemanagementsystem.util.Messages.showAlterEmployeeMessage;
 import static com.andreeastoian.Employeemanagementsystem.util.Messages.showFiltersMessage;
 
 @Component
 public class CmdOperationsImpl implements CmdOperations {
     private static final Logger LOGGER = LoggerFactory.getLogger(CmdOperationsImpl.class);
-    EmployeeCrudOperationsImpl employeeCrudOperationsImpl = new EmployeeCrudOperationsImpl();
+    private EmployeeCrudOperationsImpl employeeCrudOperationsImpl = new EmployeeCrudOperationsImpl();
 
-    EmployeeFilterOperationsImpl employeeFilterOperationsImpl = new EmployeeFilterOperationsImpl();
-    List<Employee> employeeList = new ArrayList<>();
+    private EmployeeFilterOperationsImpl employeeFilterOperationsImpl = new EmployeeFilterOperationsImpl();
 
     @Override
-    public Employee alterEmployeeFromCmd() {
-        employeeList.addAll(getInitialEmployees());
+    public Employee alterEmployeeFromCmd(List<Employee> employeeList) {
         employeeCrudOperationsImpl.addEmployee(employeeList, employeeFromCmd);
         LOGGER.info("Enter the employee email you want to modify:");
         Scanner input = new Scanner(System.in);
@@ -51,11 +47,11 @@ public class CmdOperationsImpl implements CmdOperations {
                 do {
                     LOGGER.info("Enter the new email address for the employee:");
                     email = input.next();
-                    if (isEmailInTheList(email)) {
+                    if (isEmailInTheList(employeeList, email)) {
                         LOGGER.info("This email already exists!");
                         oldEmp.setEmail(input.nextLine());
                     }
-                } while (isEmailInTheList(email));
+                } while (isEmailInTheList(employeeList, email));
                 break;
             case 5:
                 LOGGER.info("Enter the new function of the employee:");
@@ -86,7 +82,7 @@ public class CmdOperationsImpl implements CmdOperations {
     }
 
     @Override
-    public void applyFilters() {
+    public void applyFilters(List<Employee> employeeList) {
         Scanner input = new Scanner(System.in);
         do {
             showFiltersMessage();
@@ -106,7 +102,11 @@ public class CmdOperationsImpl implements CmdOperations {
                     LOGGER.info("Enter month as integer!");
                     int month = input.nextInt();
                     List<Employee> employeesThree = employeeFilterOperationsImpl.getEmployeesWhoResignByMonthAndYear(employeeList, month, year);
-                    employeesThree.forEach(System.out::println);
+                    if (employeesThree.isEmpty()) {
+                        System.out.println(String.format("There is no employee that has resigned in: month %s, year %s", month, year));
+                    } else {
+                        employeesThree.forEach(System.out::println);
+                    }
                     break;
                 case 4:
                     LOGGER.info("Enter how many months!");
@@ -127,7 +127,6 @@ public class CmdOperationsImpl implements CmdOperations {
                     LOGGER.info("The managers are: ");
                     for (Employee managers : getManagers)
                         System.out.println(managers);
-
                     break;
                 case 8:
                     employeeFilterOperationsImpl.getManagersAndEmployees(employeeList);
@@ -143,11 +142,13 @@ public class CmdOperationsImpl implements CmdOperations {
     }
 
     Employee employeeFromCmd = new Employee();
+
     @Override
-    public Employee createEmployeeFromCmd() {
+    public Employee createEmployeeFromCmd(List<Employee> employeeList) {
 
         Scanner input = new Scanner(System.in);
 
+        employeeFromCmd.setId(employeeList.size() + 1);
         LOGGER.info("Enter employee first name: ");
         employeeFromCmd.setFirstName(input.next());
         LOGGER.info("Enter employee last name: ");
@@ -158,11 +159,11 @@ public class CmdOperationsImpl implements CmdOperations {
         do {
             LOGGER.info("Enter employee email:");
             email = input.next();
-            if (isEmailInTheList(email)) {
+            if (isEmailInTheList(employeeList, email)) {
                 LOGGER.info("This email already exists!");
                 employeeFromCmd.setEmail(input.nextLine());
             }
-        } while (isEmailInTheList(email));
+        } while (isEmailInTheList(employeeList, email));
         employeeFromCmd.setEmail(email);
 
         LOGGER.info("Enter employment date of employee using the following pattern: yyyy-mm-dd");
@@ -182,7 +183,7 @@ public class CmdOperationsImpl implements CmdOperations {
         return employeeFromCmd;
     }
 
-    public boolean isEmailInTheList(String email) {
+    public boolean isEmailInTheList(List<Employee> employeeList, String email) {
         return employeeList.stream()
                 .anyMatch(empl -> empl.getEmail().equalsIgnoreCase(email));
     }

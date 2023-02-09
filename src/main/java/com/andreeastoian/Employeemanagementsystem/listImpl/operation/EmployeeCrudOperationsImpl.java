@@ -41,6 +41,13 @@ public class EmployeeCrudOperationsImpl implements EmployeeCrudOperations {
         LOGGER.info(String.valueOf(newEmployee));
     }
 
+    @Override
+    public void showAllEmployees(List<Employee> employeeList) {
+        for (Employee employee : employeeList) {
+            LOGGER.info(String.valueOf(employee));
+        }
+    }
+
     public Employee getEmployeeByEmail(List<Employee> employeeList, String verEmail) {
         List<Employee> employee = employeeList.stream()
                 .filter(employee1 -> employee1.getEmail().equalsIgnoreCase(verEmail))
@@ -50,5 +57,4 @@ public class EmployeeCrudOperationsImpl implements EmployeeCrudOperations {
         }
         throw new EmployeeNotFoundException(String.format("No employee found for email: %s", verEmail));
     }
-
 }
